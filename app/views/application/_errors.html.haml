@@ -1,0 +1,6 @@
+- if flash[:errors].present?
+  %i.icon-exclamation-sign/
+  There were some problems with what you entered:
+  %ul
+    - flash[:errors].each do |error|
+      %li= error
