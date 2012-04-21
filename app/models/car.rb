@@ -4,6 +4,12 @@ class Car < ActiveRecord::Base
 
   has_one :manufacturer, :through => :model
   has_many :car_attributes
-  
+
   validates_presence_of :model, :dealer, :name, :year, :mileage, :color
+
+  class << self
+    def by_dealer(dealer)
+      where(:dealer_id => dealer.id)
+    end
+  end
 end
