@@ -1,5 +1,5 @@
 !!! 5
-%html
+%html{:lang => "en"}
   %head
     %title Auto
     = stylesheet_link_tag "application", :media => "all"
@@ -7,4 +7,12 @@
     = csrf_meta_tags
 
   %body
-    = yield
+    = render :partial => 'header'
+
+    .container
+      = yield
+
+      %hr
+      %footer
+        &copy; AutoBid NI
+        = Date.today.year
