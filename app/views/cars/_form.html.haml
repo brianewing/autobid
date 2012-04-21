@@ -1,0 +1,15 @@
+= simple_form_for @car, :html => {:class => "form-horizontal"} do |form|
+  .well
+    %h2 Car Details
+    = form.input :name
+    = form.input :year, :hint => 2000
+    = form.input :model, :collection => Model.all, :label_method => :name, :value_method => :id
+    = form.input :mileage, :step => 1000
+    = form.input :color
+
+  .well
+    %h2 More Details
+    [any sort of thing]
+
+  %hr/
+  = form.button :submit

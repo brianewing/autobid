@@ -1,0 +1,23 @@
+.well
+  .row
+    .span2
+      %img{:src => "http://placehold.it/128x128"}
+
+    .span6
+      %h3
+        = link_to car.model.full_name, car
+        = "(#{car.year})"
+
+      %strong
+        %i= car.name
+
+      %table
+        %tr
+          %td
+            %strong Color
+          %td= car.color.capitalize
+
+        %tr
+          %td
+            %strong Mileage
+          %td= car.mileage

@@ -1,0 +1,5 @@
+- flash.each do |kind, text|
+  %span.label{:class => "label-#{kind}"}= text
+
+- if not flash.empty?
+  %br
