@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421165433) do
+ActiveRecord::Schema.define(:version => 20120421182147) do
+
+  create_table "auctions", :force => true do |t|
+    t.integer  "car_id"
+    t.integer  "start_price"
+    t.datetime "listed_at"
+    t.datetime "ends_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "auctions", ["car_id"], :name => "index_auctions_on_car_id"
 
   create_table "car_attributes", :force => true do |t|
     t.integer  "car_id"
