@@ -1,0 +1,13 @@
+= simple_form_for @dealer, :html => {:class => "form-horizontal"} do |form|
+  .well
+    %h2 Your business
+    = form.input :name
+    = form.input :url, :label => "Website URL"
+
+  .well
+    %h2 Login details
+    = form.input :email, :label => "Email address"
+    = form.input :password, :hint => false
+
+  %hr/
+  = form.button :submit
