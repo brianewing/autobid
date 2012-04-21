@@ -39,11 +39,11 @@
                 %b.caret
 
               %ul.dropdown-menu
-                %form.well
+                %form.well{:action => login_path, :method => 'post'}
                   %li
-                    %input{:value => "Username"}
+                    %input{:name => 'email', :value => "email@address.com"}
                   %li
-                    %input{:value => "Password", :type => "password"}
+                    %input{:name => 'password', :value => "Password", :type => "password"}
                   %li.divider
 
                   %li

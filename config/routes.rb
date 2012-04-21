@@ -3,4 +3,5 @@ Auto::Application.routes.draw do
 
   resources :dealers
   match 'logout', :to => 'site#logout', :as => 'logout'
+  post 'login', :to => 'site#login', :as => 'login'
 end
