@@ -5,7 +5,7 @@
 
     .span6
       %h3
-        = link_to car.model.full_name, car
+        = link_to car.model.full_name, edit_car_path(car)
         = "(#{car.year})"
 
       %strong

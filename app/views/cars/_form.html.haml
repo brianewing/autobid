@@ -3,7 +3,7 @@
     %h2 Car Details
     = form.input :name
     = form.input :year, :hint => 2000
-    = form.input :model, :collection => Model.all, :label_method => :name, :value_method => :id
+    = form.association :model
     = form.input :mileage, :step => 1000
     = form.input :color
 

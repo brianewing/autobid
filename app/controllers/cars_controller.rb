@@ -4,7 +4,7 @@ class CarsController < ApplicationController
   before_filter :ensure_dealer
   before_filter :assign_car, :only => [:new, :update, :edit]
 
-  safe :car, :name, :year, :model, :mileage, :color
+  safe :car, :name, :year, :model_id, :mileage, :color
 
   def new; end
 
@@ -12,9 +12,12 @@ class CarsController < ApplicationController
     @cars = Car.find_all_by_dealer_id(current_dealer.id)
   end
 
+  def show; end
+  def edit; end
+
   def create
     car = safe_params
-    car[:model] = Model.find_by_id(car[:model])
+    car[:model] = Model.find_by_id(car.delete(:model_id))
 
     @car = Car.by_dealer(current_dealer).create(car)
 
@@ -25,6 +28,15 @@ class CarsController < ApplicationController
       flash.now[:errors] = @car.errors.full_messages
       render :new
     end
+  end
+
+  def update
+    car = safe_params
+    car[:model] = Model.find_by_id(car.delete(:model_id))
+
+    @car.update_attributes(car)
+    flash[:success] = "Car updated"
+    redirect_to :cars
   end
 
   def edit; end
