@@ -15,3 +15,22 @@
             %a{:href => '#'} About
           %li
             %a{:href => '#'} Contact
+
+        %ul.nav.pull-right
+          %li
+            %a{:href => '#'} Register
+
+          %li.divider-vertical
+          %li.dropdown
+            %a.dropdown-toggle{:href => '#', :'data-toggle' => 'dropdown'}
+              Login
+              %b.caret
+            %ul.dropdown-menu
+              %form.well
+                %li
+                  %input{:value => "Username"}
+                %li
+                  %input{:value => "Password", :type => "password"}
+                %li.divider
+                %li
+                  %button.btn.btn-primary{:type => 'submit'} Login
