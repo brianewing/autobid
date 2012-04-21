@@ -1,0 +1,9 @@
+%h1 My Cars
+
+%hr
+
+- if @cars.empty?
+  %h2 You're not selling any cars right now.
+  %br
+  
+  %a.btn.btn-primary{:href => new_car_path} Sell my first car &rarr;
