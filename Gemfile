@@ -13,3 +13,4 @@ end
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'haml'
+gem 'simple_form'
