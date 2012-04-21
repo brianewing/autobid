@@ -6,15 +6,17 @@
         %span.icon-bar
         %span.icon-bar
 
-      %a.brand{:href => "#"} Autobid
+      %a.brand{:href => root_url} Autobid
       .nav-collapse
         %ul.nav
           %li.active
-            %a{:href => '#'} Search
+            %a{:href => root_url}
+              %i.icon-search
+              Search
           %li
-            %a{:href => '#'} About
-          %li
-            %a{:href => '#'} Contact
+            %a{:href => '#'}
+              %i.icon-info-sign
+              About
 
         %ul.nav.pull-right
           - if current_dealer.present?
