@@ -17,9 +17,10 @@
             %a{:href => '#'} Contact
 
         %ul.nav.pull-right
-          %li
-            = link_to "Register", new_dealer_path
-          %li.divider-vertical
+          - unless @dealer.present?
+            %li
+              = link_to "Register", new_dealer_path
+            %li.divider-vertical
 
           %li.dropdown
             %a.dropdown-toggle{:href => '#', :'data-toggle' => 'dropdown'}
