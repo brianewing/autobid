@@ -18,7 +18,7 @@
 
         %ul.nav.pull-right
           %li
-            %a{:href => '#'} Register
+            = link_to "Register", new_dealer_path
           %li.divider-vertical
 
           %li.dropdown
@@ -33,6 +33,6 @@
                 %li
                   %input{:value => "Password", :type => "password"}
                 %li.divider
-                
+
                 %li
                   %button.btn.btn-primary{:type => 'submit'} Login
