@@ -1,7 +1,12 @@
 .hero-unit
   %h1 Find your next car
-  %p Blurb about finding cars
-  %p
-    %a.btn.btn-primary.btn-large Do something
+  %br
 
-%a.btn.btn-primary{:href => auctions_path} View Auctions &rarr;
+  %p
+    Search by make and model within Northern Ireland
+    %br
+
+    %input.search-query{:placeholder => "Search"}
+    %a.btn.btn-primary Search
+
+%a.btn.btn-primary{:href => auctions_path} View today's auctions &rarr;
