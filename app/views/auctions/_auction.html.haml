@@ -1,7 +1,21 @@
 .row
-  .span3
-    %img{:src => auction.car.thumb_image_url}
+  .row
+    .span3
+      %img{:src => auction.car.thumb_image_url}
 
-  .span6
-    Hello
-    
+    .row
+      %h2.span6
+        = link_to auction.car.title, auction
+      %br
+      %br
+
+      %h3.span3
+        Current bid: £
+        = auction.current_bid
+
+      %br
+      %br
+
+      %strong.span5
+        Ends in
+        = distance_of_time_in_words Time.now, auction.ends_at

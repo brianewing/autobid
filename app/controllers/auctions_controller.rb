@@ -2,7 +2,7 @@ class AuctionsController < ApplicationController
   include SafeParams
 
   before_filter :ensure_dealer, :only => [:new, :create, :update]
-  before_filter :assign_auction, :only => [:new, :update, :edit, :show]
+  before_filter :assign_auction, :only => [:new, :update, :edit]
 
   safe :auction, :car_id, :'ends_at(3i)', :'ends_at(2i)', :'ends_at(1i)', :start_price
 
@@ -15,7 +15,10 @@ class AuctionsController < ApplicationController
   end
 
   def new; end
-  def show; end
+
+  def show
+    @auction = Auction.find_by_id(params[:id])
+  end
 
   def create
     auction = safe_params
