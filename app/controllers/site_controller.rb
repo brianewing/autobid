@@ -1,5 +1,6 @@
 class SiteController < ApplicationController
   def index
+    @models = Model.all(:include => :manufacturer).collect(&:full_name)
   end
 
   def logout

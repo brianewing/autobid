@@ -3,13 +3,15 @@ class Auction < ActiveRecord::Base
   has_one :dealer, :through => :car
   has_many :bids
 
+  before_create :list!
+
   class << self
     def listed
       where('listed_at is not null')
     end
 
     def active
-      listed.where('ends_at < ?', Time.now)
+      listed.where('ends_at > ?', Time.now)
     end
 
     def by_dealer(dealer)
@@ -27,5 +29,9 @@ class Auction < ActiveRecord::Base
 
   def current_bid
     bids.highest.present? ? bids.highest.amount : start_price
+  end
+
+  def list!
+    self.listed_at = Time.now
   end
 end

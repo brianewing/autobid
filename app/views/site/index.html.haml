@@ -1,3 +1,8 @@
+:javascript
+  $(function() {
+    $('.car-search').typeahead({source: #{@models.to_json}});
+  });
+
 .hero-unit
   %h1 Find your next car
   %br
@@ -6,7 +11,7 @@
     Search by make and model within Northern Ireland
     %br
 
-    %input.search-query{:placeholder => "Search"}
+    %input.search-query.car-search{:placeholder => "Search"}
     %a.btn.btn-primary Search
 
 %a.btn.btn-primary{:href => auctions_path} View today's auctions &rarr;

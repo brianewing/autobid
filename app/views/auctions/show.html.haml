@@ -7,9 +7,11 @@
     });
 
     $('.bid-button').click(function() {
-      var amount = +$('input.bid-amount').val();
-      $('.bid-amount').val(amount + 1000);
-      $('.current-bid').text(amount.toString());
+      setTimeout(function() {
+        var amount = +$('input.bid-amount').val();
+        $('.bid-amount').val(amount + 1000);
+        $('.current-bid').text(amount.toString());
+      }, 250);
     });
   });
 
@@ -24,7 +26,7 @@
 .well
   .row
     .car-hero
-      %img{:src => "http://placehold.it/900x256px"}
+      %img{:src => "http://www.breienmetplezier.nl/Breipatronen/vergrotingen/brum.gif"}
   %br
 
   .row
