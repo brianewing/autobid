@@ -1,0 +1,9 @@
+= simple_form_for @auction, :html => {:class => "form-horizontal"} do |form|
+  .well
+    %h2 Auction Details
+    = form.association :car, :collection => current_dealer.cars, :prompt => "Choose a car"
+    = form.input :start_price
+    = form.input :ends_at, :as => :date, :input_html => {:class => 'datetime'}, :order => [:day, :month, :year]
+
+  %hr/
+  = form.button :submit

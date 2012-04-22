@@ -12,4 +12,8 @@ class Car < ActiveRecord::Base
       where(:dealer_id => dealer.id)
     end
   end
+
+  def thumb_image_url
+    "http://placehold.it/128x128"
+  end
 end

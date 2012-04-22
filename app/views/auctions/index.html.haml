@@ -1,0 +1,11 @@
+%h1 Auctions
+
+- if not @auctions.empty?
+  = render :partial => 'auction', :collection => @auctions
+- elsif dealer?
+  %h3 You don't have any auctions
+  %br
+
+  %a.btn.btn-primary{:href => new_auction_path} Start a new auction
+- else
+  %h3 Sorry, but there aren't any cars for you to bid on today

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_dealer
+  helper_method :current_dealer, :dealer?
 
   private
 
@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
 
   def login!(dealer)
     session[:dealer_id] = dealer.id
+  end
+
+  def dealer?
+    current_dealer.present?
   end
 end
