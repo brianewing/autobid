@@ -1,3 +1,12 @@
+:javascript
+  $(function() {
+    $('.auction-timer').countdown({
+      date: "#{j @auction.ends_at.strftime("%B %d, %Y %H:%M:%S").downcase}",
+      onComplete: function() { window.reload(); },
+      leadingZero: false
+    });
+  });
+
 %h2
   Auction for
   = @auction.car.title
@@ -5,3 +14,16 @@
 %i
   Ends in
   = distance_of_time_in_words Time.now, @auction.ends_at
+
+.well
+  .row
+    .car-hero
+      %img{:src => "http://placehold.it/900x256px"}
+  %br
+
+  .row
+    %h1.span6.offset3.auction-timer{:class => (@auction.ends_at < 1.day.from_now) ? "almost-finished" : ""}
+
+.well
+  .row
+    %h2.span3 Bid on this car
