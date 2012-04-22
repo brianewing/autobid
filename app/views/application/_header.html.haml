@@ -13,10 +13,16 @@
             %a{:href => root_url}
               %i.icon-search
               Search
-          %li
-            %a{:href => cars_path}
-              %i.icon-plane
-              My Cars
+          - if dealer?
+            %li
+              %a{:href => cars_path}
+                %i.icon-plane
+                My Cars
+            %li
+              %a{:href => auctions_path}
+                %i.icon-fire
+                My Auctions
+          
           %li
             %a{:href => '#'}
               %i.icon-info-sign
