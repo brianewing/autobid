@@ -16,4 +16,8 @@ class Car < ActiveRecord::Base
   def thumb_image_url
     "http://placehold.it/128x128"
   end
+
+  def title
+    "#{model.full_name} (#{year})"
+  end
 end
