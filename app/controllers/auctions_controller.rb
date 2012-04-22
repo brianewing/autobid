@@ -1,6 +1,10 @@
 class AuctionsController < ApplicationController
+  include SafeParams
+
   before_filter :ensure_dealer, :only => [:new, :create, :update]
   before_filter :assign_auction, :only => [:new, :update, :edit]
+
+  safe :auction, :car_id, :'ends_at(3i)', :'ends_at(2i)', :'ends_at(1i)', :start_price
 
   def index
     if dealer?
@@ -13,7 +17,18 @@ class AuctionsController < ApplicationController
   def new; end
 
   def create
-    
+    auction = safe_params
+    auction[:car] = Car.by_dealer(current_dealer).find_by_id(auction.delete(:car_id))
+    auction[:ends_at] = Time.parse "#{auction.delete('ends_at(1i)')}/#{auction.delete('ends_at(2i)')}/#{auction.delete('ends_at(3i)')} #{Time.now.strftime '%H:%M'}"
+
+    @auction = Auction.by_dealer(current_dealer).create(auction)
+
+    if @auction.persisted?
+      redirect_to @auction
+    else
+      flash.now[:errors] = @auctions.errors.full_messages
+      render :new
+    end
   end
 
   private
