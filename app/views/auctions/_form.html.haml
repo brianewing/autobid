@@ -2,7 +2,7 @@
   .well
     %h2 Auction Details
     = form.association :car, :collection => current_dealer.cars, :prompt => "Choose a car"
-    = form.input :start_price
+    = form.input :start_price, :label => "Start price &pound;".html_safe
     = form.input :ends_at, :as => :date, :input_html => {:class => 'datetime'}, :order => [:day, :month, :year]
 
   %hr/

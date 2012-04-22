@@ -4,6 +4,7 @@ Auto::Application.routes.draw do
   resources :dealers
   resources :cars
   resources :auctions
+  resources :bids
   
   match 'logout', :to => 'site#logout', :as => 'logout'
   post 'login', :to => 'site#login', :as => 'login'

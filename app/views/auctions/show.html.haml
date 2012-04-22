@@ -1,9 +1,15 @@
 :javascript
   $(function() {
     $('.auction-timer').countdown({
-      date: "#{j @auction.ends_at.strftime("%B %d, %Y %H:%M:%S").downcase}",
+      date: "#{j (@auction.ends_at + 1.hour).strftime("%B %d, %Y %H:%M:%S").downcase}",
       onComplete: function() { window.reload(); },
       leadingZero: false
+    });
+
+    $('.bid-button').click(function() {
+      var amount = +$('input.bid-amount').val();
+      $('.bid-amount').val(amount + 1000);
+      $('.current-bid').text(amount.toString());
     });
   });
 
@@ -27,3 +33,20 @@
 .well
   .row
     %h2.span3 Bid on this car
+
+  .row
+    %h3.span8
+      Current bid: £
+      .current-bid{:style => "display:inline"}= @auction.current_bid
+
+  %br
+  .row
+    .span2
+      I want to buy this for 
+  .row
+    .span4
+      &pound;
+      %input.bid-amount{:type => "number", :value => @auction.minimum_next_bid}
+
+    .span1{:style => "margin-left: -50px"}
+      %button.btn.btn-danger.bid-button{:type => 'submit'} Bid
